@@ -135,13 +135,12 @@ export default function BathroomRemodelingPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-black text-white">
         <Image
-          src="/images/featured-villa.jpg"
+          src="/images/bathroom-5.jpg"
           alt="Bathroom remodeling by All County Construction"
           fill
           priority
-          className="object-cover opacity-30"
+          className="object-cover opacity-15 grayscale contrast-125"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/70 to-brand-black/40" />
         <div className="container-site relative py-24 sm:py-32">
           <Reveal>
             <p className="inline-block rounded-full bg-brand-red/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-red">
