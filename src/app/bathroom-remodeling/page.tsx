@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import EstimateForm from "@/components/EstimateForm";
 import MobileCta from "@/components/MobileCta";
+import Reveal from "@/components/Reveal";
 import { BUSINESS } from "@/lib/constants";
 import { GOOGLE_REVIEWS } from "@/lib/reviews";
 
@@ -131,62 +132,67 @@ export default function BathroomRemodelingPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/70 to-brand-black/40" />
         <div className="container-site relative py-24 sm:py-32">
-          <p className="inline-block rounded-full bg-brand-red/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-red">
-            Bathroom Remodeling &middot; Central Florida
-          </p>
-          <h1 className="mt-5 max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-            Bathroom Remodeling You Can Trust
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-white/85">
-            Full remodels, custom showers, tile, vanities, and fixtures &mdash; built by a
-            licensed and insured team, from free estimate to final walkthrough.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href={BUSINESS.phoneHref}
-              className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-red/30 transition-colors hover:bg-brand-red-dark"
-            >
-              Call {BUSINESS.phoneDisplay}
-            </a>
-            <a
-              href="#estimate"
-              className="rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white hover:text-brand-black"
-            >
-              Request a Bathroom Estimate
-            </a>
-          </div>
+          <Reveal>
+            <p className="inline-block rounded-full bg-brand-red/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-red">
+              Bathroom Remodeling &middot; Central Florida
+            </p>
+            <h1 className="mt-5 max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+              Bathroom Remodeling You Can Trust
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              Full remodels, custom showers, tile, vanities, and fixtures &mdash; built by a
+              licensed and insured team, from free estimate to final walkthrough.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href={BUSINESS.phoneHref}
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-red/30 transition-colors hover:bg-brand-red-dark"
+              >
+                Call {BUSINESS.phoneDisplay}
+              </a>
+              <a
+                href="#estimate"
+                className="rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white hover:text-brand-black"
+              >
+                Request a Bathroom Estimate
+              </a>
+            </div>
+          </Reveal>
 
-          <div className="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
-            {STATS.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-extrabold text-brand-red sm:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-xs text-white/70 sm:text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          <Reveal delay={200}>
+            <div className="mt-16 grid max-w-xl grid-cols-3 gap-6 border-t border-white/15 pt-8">
+              {STATS.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-2xl font-extrabold text-brand-red sm:text-3xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-xs text-white/70 sm:text-sm">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Services offered */}
       <section className="container-site py-20">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-bold uppercase tracking-wide text-brand-red">What We Do</p>
           <h2 className="mt-2 text-3xl font-extrabold text-brand-black sm:text-4xl">
             What&rsquo;s Included in Our Bathroom Remodeling
           </h2>
-        </div>
+        </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES_OFFERED.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-black/10 p-7 transition-shadow hover:shadow-lg"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
-                <CheckIcon />
+          {SERVICES_OFFERED.map((item, i) => (
+            <Reveal key={item.title} delay={(i % 3) * 100}>
+              <div className="h-full rounded-2xl border border-black/10 p-7 transition-shadow hover:shadow-lg">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
+                  <CheckIcon />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-brand-black">{item.title}</h3>
+                <p className="mt-2 text-sm text-brand-black/70">{item.description}</p>
               </div>
-              <h3 className="mt-4 text-lg font-bold text-brand-black">{item.title}</h3>
-              <p className="mt-2 text-sm text-brand-black/70">{item.description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -225,30 +231,32 @@ export default function BathroomRemodelingPage() {
       {/* Reviews */}
       {BATHROOM_REVIEWS.length > 0 && (
         <section className="container-site py-20">
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">
               Verified Reviews
             </p>
             <h2 className="mt-2 text-3xl font-extrabold text-brand-black sm:text-4xl">
               What Bathroom Remodeling Clients Say
             </h2>
-          </div>
+          </Reveal>
           <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
-            {BATHROOM_REVIEWS.map((review) => (
-              <div key={review.name} className="rounded-2xl bg-zinc-50 p-7">
-                <div className="flex text-brand-red">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <StarIcon key={i} />
-                  ))}
+            {BATHROOM_REVIEWS.map((review, i) => (
+              <Reveal key={review.name} delay={i * 100}>
+                <div className="h-full rounded-2xl bg-zinc-50 p-7">
+                  <div className="flex text-brand-red">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <StarIcon key={i} />
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm text-brand-black/75">&ldquo;{review.text}&rdquo;</p>
+                  <div className="mt-4">
+                    <p className="text-sm font-bold text-brand-black">{review.name}</p>
+                    <p className="text-xs text-brand-black/50">
+                      Google review &middot; {review.timeAgo}
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-3 text-sm text-brand-black/75">&ldquo;{review.text}&rdquo;</p>
-                <div className="mt-4">
-                  <p className="text-sm font-bold text-brand-black">{review.name}</p>
-                  <p className="text-xs text-brand-black/50">
-                    Google review &middot; {review.timeAgo}
-                  </p>
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
@@ -257,30 +265,30 @@ export default function BathroomRemodelingPage() {
       {/* Process */}
       <section className="bg-brand-black py-20 text-white">
         <div className="container-site">
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">
               How It Works
             </p>
             <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">
               From Consultation to Completion
             </h2>
-          </div>
+          </Reveal>
           <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {PROCESS_STEPS.map((item) => (
-              <div key={item.title} className="relative">
+            {PROCESS_STEPS.map((item, i) => (
+              <Reveal key={item.title} delay={i * 100} className="relative">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-lg font-extrabold">
                   {item.step}
                 </div>
                 <h3 className="mt-4 text-lg font-bold">{item.title}</h3>
                 <p className="mt-2 text-sm text-white/70">{item.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Service areas */}
-      <section className="container-site py-16 text-center">
+      <Reveal className="container-site block py-16 text-center">
         <p className="text-sm font-bold uppercase tracking-wide text-brand-red">Where We Work</p>
         <h2 className="mt-2 text-3xl font-extrabold text-brand-black sm:text-4xl">
           Areas We Serve
@@ -289,11 +297,11 @@ export default function BathroomRemodelingPage() {
           We proudly provide bathroom remodeling services throughout {BUSINESS.serviceArea}.
           Call us to confirm coverage for your city.
         </p>
-      </section>
+      </Reveal>
 
       {/* FAQ */}
       <section className="bg-zinc-50 py-20">
-        <div className="container-site">
+        <Reveal className="container-site">
           <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
             Bathroom Remodeling FAQs
           </h2>
@@ -307,7 +315,7 @@ export default function BathroomRemodelingPage() {
               </details>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* Estimate form */}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BUSINESS } from "@/lib/constants";
 import { GOOGLE_REVIEWS } from "@/lib/reviews";
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 
 const SERVICES = [
   {
@@ -110,54 +111,58 @@ export default function Home() {
           alt="All County Construction job site"
           fill
           priority
-          className="object-cover opacity-40"
+          className="object-cover object-top opacity-15 grayscale contrast-125"
         />
         <div className="container-site relative py-24 sm:py-32">
-          <h1 className="max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl">
-            Built Right. On Code. On Time.
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-white/85">
-            At All County Construction, we specialize in high-quality commercial remodeling,
-            tenant build-outs, bathroom remodeling, and office fit-outs across{" "}
-            {BUSINESS.serviceArea}. Our experienced team delivers precise, code-compliant
-            construction &mdash; on time and on budget.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href={BUSINESS.phoneHref}
-              className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark"
-            >
-              Get a Free Estimate
-            </a>
-            <Link
-              href="/bathroom-remodeling"
-              className="rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white hover:text-brand-black"
-            >
-              Bathroom Remodeling
-            </Link>
-          </div>
+          <Reveal>
+            <h1 className="max-w-2xl text-4xl font-extrabold leading-tight sm:text-5xl">
+              Built Right. On Code. On Time.
+            </h1>
+            <p className="mt-5 max-w-xl text-lg text-white/85">
+              At All County Construction, we specialize in high-quality commercial remodeling,
+              tenant build-outs, bathroom remodeling, and office fit-outs across{" "}
+              {BUSINESS.serviceArea}. Our experienced team delivers precise, code-compliant
+              construction &mdash; on time and on budget.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href={BUSINESS.phoneHref}
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark"
+              >
+                Get a Free Estimate
+              </a>
+              <Link
+                href="/bathroom-remodeling"
+                className="rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white hover:text-brand-black"
+              >
+                Bathroom Remodeling
+              </Link>
+            </div>
+          </Reveal>
 
-          <div className="mt-14 flex flex-wrap gap-10 sm:gap-16">
-            <div>
-              <p className="text-4xl font-extrabold text-brand-red">120+</p>
-              <p className="mt-1 text-sm text-white/70">Projects Complete</p>
+          <Reveal delay={200}>
+            <div className="mt-14 flex flex-wrap gap-10 sm:gap-16">
+              <div>
+                <p className="text-4xl font-extrabold text-brand-red">120+</p>
+                <p className="mt-1 text-sm text-white/70">Projects Complete</p>
+              </div>
+              <div>
+                <p className="text-4xl font-extrabold text-brand-red">98%</p>
+                <p className="mt-1 text-sm text-white/70">Client Satisfaction</p>
+              </div>
+              <div>
+                <p className="text-4xl font-extrabold text-brand-red">5.0 / 5</p>
+                <p className="mt-1 text-sm text-white/70">Average Google Rating</p>
+              </div>
             </div>
-            <div>
-              <p className="text-4xl font-extrabold text-brand-red">98%</p>
-              <p className="mt-1 text-sm text-white/70">Client Satisfaction</p>
-            </div>
-            <div>
-              <p className="text-4xl font-extrabold text-brand-red">5.0 / 5</p>
-              <p className="mt-1 text-sm text-white/70">Average Google Rating</p>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* About */}
       <section id="about" className="container-site py-20">
         <div className="grid items-center gap-12 md:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">
               About All County
             </p>
@@ -175,82 +180,87 @@ export default function Home() {
             >
               About Us
             </Link>
-          </div>
-          <div className="relative h-72 overflow-hidden rounded-2xl sm:h-96">
+          </Reveal>
+          <Reveal delay={150} className="relative h-72 overflow-hidden rounded-2xl sm:h-96">
             <Image
               src="/images/teamwork.jpg"
               alt="All County Construction team"
               fill
               className="object-cover"
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Why Choose Us */}
       <section className="bg-zinc-50 py-20">
         <div className="container-site">
-          <p className="text-center text-sm font-bold uppercase tracking-wide text-brand-red">
-            Experience You Can Trust
-          </p>
-          <h2 className="mt-2 text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
-            Why Choose All County Construction?
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
-            At All County Construction, we deliver more than projects &mdash; we deliver
-            confidence. With a focus on precision, integrity, and lasting value, we ensure every
-            build is completed to the highest standard.
-          </p>
+          <Reveal>
+            <p className="text-center text-sm font-bold uppercase tracking-wide text-brand-red">
+              Experience You Can Trust
+            </p>
+            <h2 className="mt-2 text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+              Why Choose All County Construction?
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
+              At All County Construction, we deliver more than projects &mdash; we deliver
+              confidence. With a focus on precision, integrity, and lasting value, we ensure
+              every build is completed to the highest standard.
+            </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {BADGES.map((badge) => (
-              <span
-                key={badge}
-                className="rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-black shadow-sm"
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {BADGES.map((badge) => (
+                <span
+                  key={badge}
+                  className="rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-black shadow-sm"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </Reveal>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          <Reveal delay={150} className="mt-12 grid gap-8 sm:grid-cols-3">
             {WHY_CHOOSE_US.map((item) => (
               <div key={item.title} className="rounded-2xl bg-white p-7 shadow-sm">
                 <h3 className="text-lg font-bold text-brand-black">{item.title}</h3>
                 <p className="mt-2 text-sm text-brand-black/70">{item.description}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Services */}
       <section id="services" className="container-site py-20">
-        <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
-          Professional Services
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
-          At All County Construction, we offer a full spectrum of commercial and residential
-          construction services across {BUSINESS.serviceArea}. Every project is handled with
-          code-compliance, quality craftsmanship, and attention to detail.
-        </p>
+        <Reveal>
+          <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+            Professional Services
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
+            At All County Construction, we offer a full spectrum of commercial and residential
+            construction services across {BUSINESS.serviceArea}. Every project is handled with
+            code-compliance, quality craftsmanship, and attention to detail.
+          </p>
+        </Reveal>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <div
-              key={service.title}
-              className={`flex flex-col rounded-2xl border p-7 ${
-                service.highlight ? "border-brand-red bg-brand-red/5" : "border-black/10"
-              }`}
-            >
-              <h3 className="text-xl font-bold text-brand-black">{service.title}</h3>
-              <p className="mt-3 flex-1 text-sm text-brand-black/70">{service.description}</p>
-              <Link
-                href={service.href}
-                className="mt-5 text-sm font-bold text-brand-red hover:underline"
+          {SERVICES.map((service, i) => (
+            <Reveal key={service.title} delay={(i % 3) * 100}>
+              <div
+                className={`flex h-full flex-col rounded-2xl border p-7 transition-shadow hover:shadow-lg ${
+                  service.highlight ? "border-brand-red bg-brand-red/5" : "border-black/10"
+                }`}
               >
-                {service.highlight ? "View Bathroom Remodeling" : "Read More"} &rarr;
-              </Link>
-            </div>
+                <h3 className="text-xl font-bold text-brand-black">{service.title}</h3>
+                <p className="mt-3 flex-1 text-sm text-brand-black/70">{service.description}</p>
+                <Link
+                  href={service.href}
+                  className="mt-5 text-sm font-bold text-brand-red hover:underline"
+                >
+                  {service.highlight ? "View Bathroom Remodeling" : "Read More"} &rarr;
+                </Link>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -258,29 +268,33 @@ export default function Home() {
       {/* Featured Work */}
       <section id="projects" className="bg-brand-black py-20 text-white">
         <div className="container-site">
-          <h2 className="text-center text-3xl font-extrabold sm:text-4xl">
-            Showcasing Excellence in Every Build
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-center text-white/70">
-            We take pride in delivering construction projects that stand strong for generations.
-            Explore some of our featured work below.
-          </p>
+          <Reveal>
+            <h2 className="text-center text-3xl font-extrabold sm:text-4xl">
+              Showcasing Excellence in Every Build
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-center text-white/70">
+              We take pride in delivering construction projects that stand strong for
+              generations. Explore some of our featured work below.
+            </p>
+          </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {FEATURED_PROJECTS.map((project) => (
-              <div key={project.title} className="group relative h-64 overflow-hidden rounded-2xl">
-                <Image
-                  src={project.src}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-red">
-                    {project.category}
-                  </p>
-                  <p className="text-sm font-bold">{project.title}</p>
+            {FEATURED_PROJECTS.map((project, i) => (
+              <Reveal key={project.title} delay={(i % 4) * 100}>
+                <div className="group relative h-64 overflow-hidden rounded-2xl">
+                  <Image
+                    src={project.src}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-brand-red">
+                      {project.category}
+                    </p>
+                    <p className="text-sm font-bold">{project.title}</p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -288,27 +302,35 @@ export default function Home() {
 
       {/* Testimonials */}
       <section id="testimonials" className="container-site py-20">
-        <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
-          What Our Clients Say About Us
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-brand-black/70">
-          We take pride in delivering construction solutions that exceed expectations. Here are
-          real Google reviews from our clients.
-        </p>
+        <Reveal>
+          <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+            What Our Clients Say About Us
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-brand-black/70">
+            We take pride in delivering construction solutions that exceed expectations. Here
+            are real Google reviews from our clients.
+          </p>
+        </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {GOOGLE_REVIEWS.map((review) => (
-            <div key={review.name} className="flex flex-col rounded-2xl bg-zinc-50 p-6">
-              <div className="flex text-brand-red">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <StarIcon key={i} />
-                ))}
+          {GOOGLE_REVIEWS.map((review, i) => (
+            <Reveal key={review.name} delay={(i % 3) * 100}>
+              <div className="flex h-full flex-col rounded-2xl bg-zinc-50 p-6">
+                <div className="flex text-brand-red">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <StarIcon key={i} />
+                  ))}
+                </div>
+                <p className="mt-3 flex-1 text-sm text-brand-black/75">
+                  &ldquo;{review.text}&rdquo;
+                </p>
+                <div className="mt-4">
+                  <p className="text-sm font-bold text-brand-black">{review.name}</p>
+                  <p className="text-xs text-brand-black/50">
+                    Google review &middot; {review.timeAgo}
+                  </p>
+                </div>
               </div>
-              <p className="mt-3 flex-1 text-sm text-brand-black/75">&ldquo;{review.text}&rdquo;</p>
-              <div className="mt-4">
-                <p className="text-sm font-bold text-brand-black">{review.name}</p>
-                <p className="text-xs text-brand-black/50">Google review &middot; {review.timeAgo}</p>
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -316,25 +338,27 @@ export default function Home() {
       {/* FAQ */}
       <section className="bg-zinc-50 py-20">
         <div className="container-site">
-          <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
-            Common Questions About Our Construction
-          </h2>
-          <div className="mx-auto mt-10 max-w-2xl divide-y divide-black/10">
-            {FAQS.map((faq) => (
-              <details key={faq.q} className="group py-5">
-                <summary className="cursor-pointer list-none font-semibold text-brand-black">
-                  {faq.q}
-                </summary>
-                <p className="mt-2 text-sm text-brand-black/70">{faq.a}</p>
-              </details>
-            ))}
-          </div>
+          <Reveal>
+            <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+              Common Questions About Our Construction
+            </h2>
+            <div className="mx-auto mt-10 max-w-2xl divide-y divide-black/10">
+              {FAQS.map((faq) => (
+                <details key={faq.q} className="group py-5">
+                  <summary className="cursor-pointer list-none font-semibold text-brand-black">
+                    {faq.q}
+                  </summary>
+                  <p className="mt-2 text-sm text-brand-black/70">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Contact */}
       <section id="contact" className="py-20">
-        <div className="container-site">
+        <Reveal className="container-site">
           <div className="mx-auto max-w-xl text-center">
             <h2 className="text-3xl font-extrabold text-brand-black sm:text-4xl">
               Let&rsquo;s Build Your Vision
@@ -361,7 +385,7 @@ export default function Home() {
           <div className="mx-auto mt-10 max-w-xl">
             <ContactForm />
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );
