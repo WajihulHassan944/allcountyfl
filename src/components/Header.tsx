@@ -30,6 +30,8 @@ export default function Header() {
         </div>
       </div>
 
+
+
       <div className="container-site flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -65,7 +67,7 @@ export default function Header() {
             className="hidden items-center gap-2 rounded-full bg-brand-red px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark sm:flex"
           >
             <PhoneIcon />
-            Get Free a Quote
+            Get Free Quote
           </a>
           <a
             href={BUSINESS.phoneHref}
@@ -84,8 +86,7 @@ export default function Header() {
           </button>
         </div>
       </div>
-
-      {menuOpen && (
+{menuOpen && (
         <nav className="border-t border-black/10 bg-white lg:hidden">
           <div className="container-site flex flex-col gap-1 py-3">
             {NAV_LINKS.map((link) => (

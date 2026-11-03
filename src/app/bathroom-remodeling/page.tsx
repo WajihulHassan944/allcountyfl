@@ -19,36 +19,42 @@ export const metadata: Metadata = {
   },
 };
 
-const STATS = [
-  { value: "Free", label: "Written Estimates" },
-  { value: "Licensed", label: "& Insured" },
-  { value: "5.0 / 5", label: "Average Google Rating" },
+const TRUST_ITEMS = [
+  { value: "Free", label: "In-Home Estimates", icon: <DiamondIcon /> },
+  { value: "Licensed", label: "& Insured", icon: <ShieldCheckIcon /> },
+  { value: "5.0 / 5", label: "Average Google Rating", icon: <StarOutlineIcon /> },
 ];
 
 const SERVICES_OFFERED = [
   {
     title: "Full Bathroom Remodels",
     description: "Complete, start-to-finish remodels from demolition to final walkthrough.",
+    icon: <BathtubIcon />,
   },
   {
     title: "Custom & Walk-In Showers",
     description: "Frameless glass, tile surrounds, and accessible walk-in designs.",
+    icon: <ShowerIcon />,
   },
   {
     title: "Tile, Flooring & Waterproofing",
     description: "Precision tile work and proper waterproofing that lasts for years.",
+    icon: <TileIcon />,
   },
   {
     title: "Vanities, Countertops & Cabinetry",
     description: "Custom and prefab vanities fitted to your space and style.",
+    icon: <CabinetIcon />,
   },
   {
     title: "Plumbing Fixtures & Lighting",
     description: "Fixture upgrades, lighting, and ventilation improvements.",
+    icon: <BulbIcon />,
   },
   {
     title: "Aging-in-Place Conversions",
     description: "Accessible, safer bathrooms designed for every stage of life.",
+    icon: <RefreshIcon />,
   },
 ];
 
@@ -134,37 +140,20 @@ export default function BathroomRemodelingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-black text-white">
-        <Image
-          src="/images/bathroom-5.jpg"
-          alt="Bathroom remodeling by All County Construction"
-          fill
-          priority
-          className="object-cover opacity-15 grayscale contrast-125"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-brand-red/20 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-brand-red/10 blur-3xl"
-        />
-
-        <div className="container-site relative grid gap-16 py-24 sm:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-32">
-          <div>
+        <div className="container-site relative grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+          <div className="relative z-10 flex flex-col justify-center py-20 pr-0 sm:py-24 lg:py-28 lg:pr-14">
             <Reveal>
-              <p className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-red">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
-                Bathroom Remodeling &middot; Central Florida
+              <p className="text-xs font-bold uppercase tracking-wider text-brand-red">
+                All County Construction Services
               </p>
-              <h1 className="mt-6 max-w-xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
                 Bathroom Remodeling You Can Trust
               </h1>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/80">
-                Full remodels, custom showers, tile, vanities, and fixtures &mdash; built by a
-                licensed and insured team, from free estimate to final walkthrough.
+              <p className="mt-6 max-w-md text-base leading-relaxed text-white/75">
+                Fully remodeled, custom showers, tile, vanities, and fixtures &mdash; built by a
+                licensed and insured team, from free estimates to final walkthrough.
               </p>
-              <div className="mt-9 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <a
                   href={BUSINESS.phoneHref}
                   className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-red/30 transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark hover:shadow-xl"
@@ -179,32 +168,17 @@ export default function BathroomRemodelingPage() {
                 </a>
               </div>
             </Reveal>
-
-            <Reveal delay={200}>
-              <div className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-8">
-                {STATS.map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-2xl font-extrabold text-brand-red sm:text-3xl">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1 text-xs text-white/60 sm:text-sm">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
 
-          <Reveal delay={150} className="relative hidden lg:block">
-            <div className="relative h-[28rem] overflow-hidden rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-white/10">
-              <Image
-                src="/images/bathroom-3.jpg"
-                alt="Example bathroom remodel by All County Construction"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            </div>
-            <div className="absolute -bottom-7 -left-7 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl">
+          <Reveal delay={150} className="relative -mx-5 h-72 sm:-mx-6 sm:h-96 lg:mx-0 lg:h-auto">
+            <Image
+              src="/images/bathroom-3.jpg"
+              alt="Example bathroom remodel by All County Construction"
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl">
               <div className="flex text-brand-red">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <StarIcon key={i} />
@@ -212,12 +186,32 @@ export default function BathroomRemodelingPage() {
               </div>
               <div className="leading-tight">
                 <p className="text-sm font-extrabold text-brand-black">5.0 / 5</p>
-                <p className="text-xs text-brand-black/60">Google reviews</p>
+                <p className="text-xs text-brand-black/60">Google Reviews</p>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
+
+      {/* Trust strip */}
+      <Reveal className="block bg-[#f5eceb] py-9">
+        <div className="container-site flex flex-col items-center gap-8 divide-y divide-black/10 text-center sm:flex-row sm:justify-center sm:divide-x sm:divide-y-0">
+          {TRUST_ITEMS.map((item) => (
+            <div
+              key={item.label}
+              className="flex items-center gap-3 px-8 pt-8 first:pt-0 sm:pt-0"
+            >
+              <span className="text-brand-red">{item.icon}</span>
+              <span className="text-left">
+                <span className="block text-sm font-extrabold text-brand-black">
+                  {item.value}
+                </span>
+                <span className="block text-xs text-brand-black/60">{item.label}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       {/* Services offered */}
       <section className="container-site py-24">
@@ -233,7 +227,7 @@ export default function BathroomRemodelingPage() {
               <div className="group relative h-full overflow-hidden rounded-2xl border border-black/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-xl hover:shadow-black/5">
                 <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand-red transition-transform duration-300 group-hover:scale-x-100" />
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red transition-colors duration-300 group-hover:bg-brand-red group-hover:text-white">
-                  <CheckIcon />
+                  {item.icon}
                 </div>
                 <h3 className="mt-5 text-lg font-bold text-brand-black">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-black/70">
@@ -246,25 +240,32 @@ export default function BathroomRemodelingPage() {
       </section>
 
       {/* Project gallery (example/inspiration photos until client photos arrive) */}
-      <section className="bg-zinc-50 py-24">
-        <div className="container-site">
-          <Reveal className="mx-auto max-w-2xl text-center">
+      <section id="work" className="bg-zinc-50 py-24">
+        <div className="container-site grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <Reveal>
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">Our Work</p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-black sm:text-4xl">
               The Kind of Bathrooms We Build
             </h2>
-            <p className="mt-3 text-brand-black/70">
+            <p className="mt-4 text-brand-black/70">
               Example styles shown below &mdash; your real completed-project photos will replace
-              these once provided.
+              these once available.
             </p>
+            <a
+              href="#work"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark"
+            >
+              View Our Projects
+              <ArrowIcon />
+            </a>
           </Reveal>
-          <div className="mt-12 grid auto-rows-[220px] gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {GALLERY_IMAGES.map((img, i) => (
+          <div className="grid auto-rows-[140px] gap-4 grid-cols-2 sm:auto-rows-[160px] lg:grid-cols-3">
+            {GALLERY_IMAGES.slice(0, 5).map((img, i) => (
               <Reveal
                 key={img.src}
-                delay={(i % 4) * 80}
+                delay={(i % 5) * 80}
                 className={`group relative overflow-hidden rounded-2xl shadow-sm ${
-                  i === 0 ? "sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2" : ""
+                  i === 0 ? "col-span-2 row-span-2" : ""
                 }`}
               >
                 <Image
@@ -273,10 +274,6 @@ export default function BathroomRemodelingPage() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
-                  Example style
-                </span>
               </Reveal>
             ))}
           </div>
@@ -326,32 +323,31 @@ export default function BathroomRemodelingPage() {
       )}
 
       {/* Process */}
-      <section className="relative overflow-hidden bg-brand-black py-24 text-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-brand-red/10 blur-3xl"
-        />
-        <div className="container-site relative">
-          <Reveal className="mx-auto max-w-2xl text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#200505] via-brand-black to-brand-black py-16 text-white">
+        <div className="container-site relative grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
+          <Reveal>
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">
-              How It Works
+              Our Process
             </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
               From Consultation to Completion
             </h2>
+            <p className="mt-3 text-sm text-white/60">
+              A simple process to get the bathroom of your dreams.
+            </p>
           </Reveal>
-          <div className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
             <div
               aria-hidden
-              className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-white/15 to-transparent lg:block"
+              className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-white/20 to-transparent sm:block"
             />
             {PROCESS_STEPS.map((item, i) => (
               <Reveal key={item.title} delay={i * 100} className="relative">
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-lg font-extrabold shadow-lg shadow-brand-red/20 ring-4 ring-brand-black">
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-lg font-extrabold shadow-lg shadow-brand-red/30 ring-4 ring-brand-black">
                   {item.step}
                 </div>
-                <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">{item.description}</p>
+                <h3 className="mt-4 text-sm font-bold sm:text-base">{item.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-white/60">{item.description}</p>
               </Reveal>
             ))}
           </div>
@@ -481,6 +477,101 @@ function PlusIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5">
       <path strokeLinecap="round" d="M10 4v12M4 10h12" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 10h12M11 5l5 5-5 5" />
+    </svg>
+  );
+}
+
+function BathtubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <path strokeLinecap="round" d="M4 11V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2" />
+      <path strokeLinecap="round" d="M2 11h20v2a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6v-2Z" />
+      <path strokeLinecap="round" d="M5 19v2M19 19v2" />
+    </svg>
+  );
+}
+
+function ShowerIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <path strokeLinecap="round" d="M7 5a5 5 0 0 1 10 0" />
+      <path strokeLinecap="round" d="M5 9h14" />
+      <path strokeLinecap="round" d="M8 13v.01M12 13v.01M16 13v.01M9 17v.01M13 17v.01M8 21v.01M15 21v.01" />
+    </svg>
+  );
+}
+
+function TileIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <rect x="3" y="3" width="8" height="8" rx="1" />
+      <rect x="13" y="3" width="8" height="8" rx="1" />
+      <rect x="3" y="13" width="8" height="8" rx="1" />
+      <rect x="13" y="13" width="8" height="8" rx="1" />
+    </svg>
+  );
+}
+
+function CabinetIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <rect x="3" y="4" width="18" height="16" rx="1.5" />
+      <path strokeLinecap="round" d="M12 4v16" />
+      <path strokeLinecap="round" d="M8 13v.01M16 13v.01" />
+    </svg>
+  );
+}
+
+function BulbIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6M10 21h4" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2.2h5.2c0-1 .4-1.7 1-2.2A6 6 0 0 0 12 3Z" />
+    </svg>
+  );
+}
+
+function RefreshIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 10a9 9 0 0 1 15-6.7L21 6" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 3v5h-5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 14a9 9 0 0 1-15 6.7L3 18" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 21v-5h5" />
+    </svg>
+  );
+}
+
+function DiamondIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-7 w-7">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 3h12l4 6-10 12L2 9l4-6Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2 9h20M9 3l-2 6 5 12 5-12-2-6" />
+    </svg>
+  );
+}
+
+function ShieldCheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-7 w-7">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+function StarOutlineIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-7 w-7">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l2.9 6 6.6.6-5 4.5 1.5 6.4L12 17l-5.9 3.5L7.6 14l-5-4.5 6.6-.6L12 3Z" />
     </svg>
   );
 }
