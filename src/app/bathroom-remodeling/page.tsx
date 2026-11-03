@@ -103,6 +103,17 @@ const BATHROOM_REVIEWS = GOOGLE_REVIEWS.filter((r) =>
   ["Patricia Heiner", "Sandra"].includes(r.name)
 );
 
+// Example/inspiration photos (stock) shown until the client provides real
+// completed-project photos.
+const GALLERY_IMAGES = [
+  { src: "/images/bathroom-1.jpg", alt: "Modern double-vanity bathroom remodel" },
+  { src: "/images/bathroom-2.jpg", alt: "Bathroom remodel with patterned tile shower" },
+  { src: "/images/bathroom-3.jpg", alt: "Frameless glass walk-in shower remodel" },
+  { src: "/images/bathroom-4.jpg", alt: "Freestanding tub bathroom remodel" },
+  { src: "/images/bathroom-5.jpg", alt: "Full bathroom remodel with walk-in shower and tub" },
+  { src: "/images/bathroom-6.jpg", alt: "Marble tile double-vanity bathroom remodel" },
+];
+
 export default function BathroomRemodelingPage() {
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -197,30 +208,30 @@ export default function BathroomRemodelingPage() {
         </div>
       </section>
 
-      {/* Project gallery (placeholder until client photos arrive) */}
+      {/* Project gallery (example/inspiration photos until client photos arrive) */}
       <section className="bg-zinc-50 py-20">
         <div className="container-site">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-bold uppercase tracking-wide text-brand-red">Our Work</p>
             <h2 className="mt-2 text-3xl font-extrabold text-brand-black sm:text-4xl">
-              Recent Bathroom Projects
+              The Kind of Bathrooms We Build
             </h2>
             <p className="mt-3 text-brand-black/70">
-              Real before-and-after photos from our completed bathroom remodels are being added
-              here.
+              Example styles shown below &mdash; your real completed-project photos will replace
+              these once provided.
             </p>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div
-                key={n}
-                className="flex h-56 flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-brand-red/25 bg-white text-brand-black/40 shadow-sm"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
-                  <CameraIcon />
-                </div>
-                <span className="text-xs font-semibold uppercase tracking-wide">
-                  Project photo coming soon
+            {GALLERY_IMAGES.map((img) => (
+              <div key={img.src} className="group relative h-56 overflow-hidden rounded-2xl shadow-sm">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
+                  Example style
                 </span>
               </div>
             ))}
@@ -368,15 +379,6 @@ function CheckIcon({ small }: { small?: boolean }) {
         d="M16.7 5.3a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0L3.3 9.5a1 1 0 111.4-1.4l3.6 3.6 6.7-6.7a1 1 0 011.4 0z"
         clipRule="evenodd"
       />
-    </svg>
-  );
-}
-
-function CameraIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
-      <path d="M4 8a2 2 0 012-2h1.5l1-1.5h7l1 1.5H18a2 2 0 012 2v9a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" />
-      <circle cx="12" cy="13" r="3.5" />
     </svg>
   );
 }
