@@ -1,61 +1,102 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BUSINESS } from "@/lib/constants";
+import { GOOGLE_REVIEWS } from "@/lib/reviews";
+import ContactForm from "@/components/ContactForm";
 
 const SERVICES = [
   {
     title: "Bathroom Remodeling",
     description:
-      "Full bathroom remodels, showers, tile, vanities, and fixtures for homeowners across Central Florida.",
+      "Full bathroom remodels, custom showers, tile, vanities, and fixtures for homeowners across Central Florida.",
     href: "/bathroom-remodeling",
-    cta: "View Bathroom Remodeling",
+    highlight: true,
   },
   {
-    title: "Commercial Construction",
+    title: "Tenant Build-Outs",
     description:
-      "Commercial renovations, tenant improvements, interior construction, and facility upgrades for businesses.",
+      "We create custom interiors for retail, corporate, and medical spaces. From space planning to final finishes, our build-outs are designed for functionality, compliance, and long-term performance.",
     href: "/#contact",
-    cta: "Request a Consultation",
   },
   {
-    title: "Government & Secure Facilities",
+    title: "Commercial Remodeling",
     description:
-      "Project management, subcontractor coordination, and controlled-environment construction experience for public-sector work.",
+      "Whether it's updating outdated spaces or transforming large facilities, our remodeling services improve efficiency, modernize interiors, and align with your business goals.",
     href: "/#contact",
-    cta: "Discuss Your Project",
+  },
+  {
+    title: "Windows & Doors",
+    description:
+      "Durable, energy-efficient, and secure solutions that improve both the performance and appearance of your property. We handle installation, replacement, and upgrades.",
+    href: "/#contact",
+  },
+  {
+    title: "Painting",
+    description:
+      "Professional interior and exterior painting that not only refreshes the look of your building but also protects it against wear, weather, and time.",
+    href: "/#contact",
+  },
+  {
+    title: "Flooring & Trim",
+    description:
+      "From hardwood to tile and everything in between, we install and finish floors that stand up to heavy use. Precision trim work completes the polished look.",
+    href: "/#contact",
+  },
+  {
+    title: "Roofing & Skylights",
+    description:
+      "Strong, reliable roofing backed by expert installation. Skylights and gutter systems add natural light and protection, enhancing the overall value of your property.",
+    href: "/#contact",
   },
 ];
 
 const WHY_CHOOSE_US = [
   {
-    title: "Licensed & Insured",
+    title: "Experience You Can Trust",
     description:
-      "Every project meets industry standards and gives clients peace of mind from start to finish.",
+      "With years of proven expertise, we deliver projects that meet the highest standards of quality. Our skilled team brings reliability and consistency to every build.",
   },
   {
-    title: "On Code. On Time.",
+    title: "Highest Safety First",
     description:
-      "We plan and manage every build to stay on schedule and in full compliance with local codes.",
+      "Safety isn't optional, it's our priority. Every project adheres to strict safety protocols and code compliance to safeguard your personnel, property, and investment.",
   },
   {
-    title: "Experienced Team",
+    title: "Innovative Solutions",
     description:
-      "From residential bathrooms to commercial and government facilities, our team manages projects of every scale.",
+      "We use modern techniques and smart planning to build efficient, cost-effective spaces designed to fit your business today and support its growth tomorrow.",
   },
 ];
 
+const BADGES = ["On Time & On Budget", "Code-Compliant", "Transparent", "Reliable"];
+
+const FEATURED_PROJECTS = [
+  { title: "Modern Residential Villa", category: "Residential Construction", src: "/images/featured-villa.jpg" },
+  { title: "Corporate Office Complex", category: "Commercial Construction", src: "/images/commercial-facade.jpg" },
+  { title: "Retail Shopping Center", category: "Commercial Construction", src: "/images/crane-sunset.jpg" },
+  { title: "Industrial Manufacturing Plant", category: "Industrial Construction", src: "/images/hero-construction.jpg" },
+];
+
 const FAQS = [
+  {
+    q: "What types of construction projects do you handle?",
+    a: "We specialize in a wide range of construction projects, including residential homes, commercial buildings, industrial facilities, and renovation services. Our team is experienced in delivering high-quality results tailored to each client's unique needs.",
+  },
+  {
+    q: "How long does a typical construction project take?",
+    a: "The timeline depends on the size and complexity of the project. Residential projects may take a few months, while larger commercial or industrial construction may require more time. We always provide a clear project schedule to keep you informed every step of the way.",
+  },
+  {
+    q: "Do you provide free construction estimates?",
+    a: "Yes, we offer free and transparent construction estimates. Our experts will assess your project requirements and provide a detailed cost breakdown to help you plan your budget with confidence.",
+  },
   {
     q: "Are your construction services licensed and insured?",
     a: "Absolutely. We are a fully licensed and insured construction company, ensuring that every project meets industry standards and provides our clients with peace of mind throughout the building process.",
   },
   {
-    q: "What areas do you serve?",
-    a: `We proudly serve ${BUSINESS.serviceArea}.`,
-  },
-  {
-    q: "How do I get a free estimate?",
-    a: `Call us at ${BUSINESS.phoneDisplay} or use the contact form below and our team will follow up with next steps.`,
+    q: "Can you assist with custom design and architecture?",
+    a: "Yes, we work closely with architects and designers to create custom construction solutions. From concept to completion, we ensure your project aligns with your vision while meeting structural and safety requirements.",
   },
 ];
 
@@ -76,23 +117,39 @@ export default function Home() {
             Built Right. On Code. On Time.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-white/85">
-            All County Construction Services, Inc. delivers bathroom remodeling, commercial
-            construction, and government &amp; secure facility projects across{" "}
-            {BUSINESS.serviceArea}.
+            At All County Construction, we specialize in high-quality commercial remodeling,
+            tenant build-outs, bathroom remodeling, and office fit-outs across{" "}
+            {BUSINESS.serviceArea}. Our experienced team delivers precise, code-compliant
+            construction &mdash; on time and on budget.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href={BUSINESS.phoneHref}
               className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark"
             >
-              Call {BUSINESS.phoneDisplay}
+              Get a Free Estimate
             </a>
             <Link
               href="/bathroom-remodeling"
               className="rounded-full border-2 border-white px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white hover:text-brand-black"
             >
-              Get a Bathroom Estimate
+              Bathroom Remodeling
             </Link>
+          </div>
+
+          <div className="mt-14 flex flex-wrap gap-10 sm:gap-16">
+            <div>
+              <p className="text-4xl font-extrabold text-brand-red">120+</p>
+              <p className="mt-1 text-sm text-white/70">Projects Complete</p>
+            </div>
+            <div>
+              <p className="text-4xl font-extrabold text-brand-red">98%</p>
+              <p className="mt-1 text-sm text-white/70">Client Satisfaction</p>
+            </div>
+            <div>
+              <p className="text-4xl font-extrabold text-brand-red">5.0 / 5</p>
+              <p className="mt-1 text-sm text-white/70">Average Google Rating</p>
+            </div>
           </div>
         </div>
       </section>
@@ -108,9 +165,9 @@ export default function Home() {
               Construction Without Compromise.
             </h2>
             <p className="mt-4 text-brand-black/75">
-              All County Construction Services, Inc. brings together residential, commercial,
-              and government construction expertise under one team &mdash; managing every
-              project with careful planning, clear communication, and quality craftsmanship.
+              From first bid to final walkthrough, All County Construction doesn&rsquo;t cut
+              corners. We deliver code-compliant, high-performance spaces with transparency and
+              care. Honesty, craftsmanship, and respect guide every project we take on.
             </p>
             <Link
               href="/#contact"
@@ -133,9 +190,29 @@ export default function Home() {
       {/* Why Choose Us */}
       <section className="bg-zinc-50 py-20">
         <div className="container-site">
-          <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+          <p className="text-center text-sm font-bold uppercase tracking-wide text-brand-red">
+            Experience You Can Trust
+          </p>
+          <h2 className="mt-2 text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
             Why Choose All County Construction?
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
+            At All County Construction, we deliver more than projects &mdash; we deliver
+            confidence. With a focus on precision, integrity, and lasting value, we ensure every
+            build is completed to the highest standard.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {BADGES.map((badge) => (
+              <span
+                key={badge}
+                className="rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-black shadow-sm"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {WHY_CHOOSE_US.map((item) => (
               <div key={item.title} className="rounded-2xl bg-white p-7 shadow-sm">
@@ -152,11 +229,18 @@ export default function Home() {
         <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
           Professional Services
         </h2>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <p className="mx-auto mt-3 max-w-2xl text-center text-brand-black/70">
+          At All County Construction, we offer a full spectrum of commercial and residential
+          construction services across {BUSINESS.serviceArea}. Every project is handled with
+          code-compliance, quality craftsmanship, and attention to detail.
+        </p>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => (
             <div
               key={service.title}
-              className="flex flex-col rounded-2xl border border-black/10 p-7"
+              className={`flex flex-col rounded-2xl border p-7 ${
+                service.highlight ? "border-brand-red bg-brand-red/5" : "border-black/10"
+              }`}
             >
               <h3 className="text-xl font-bold text-brand-black">{service.title}</h3>
               <p className="mt-3 flex-1 text-sm text-brand-black/70">{service.description}</p>
@@ -164,7 +248,7 @@ export default function Home() {
                 href={service.href}
                 className="mt-5 text-sm font-bold text-brand-red hover:underline"
               >
-                {service.cta} &rarr;
+                {service.highlight ? "View Bathroom Remodeling" : "Read More"} &rarr;
               </Link>
             </div>
           ))}
@@ -172,68 +256,121 @@ export default function Home() {
       </section>
 
       {/* Featured Work */}
-      <section className="bg-brand-black py-20 text-white">
+      <section id="projects" className="bg-brand-black py-20 text-white">
         <div className="container-site">
           <h2 className="text-center text-3xl font-extrabold sm:text-4xl">
             Showcasing Excellence in Every Build
           </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {[
-              { src: "/images/commercial-facade.jpg", alt: "Commercial construction project" },
-              { src: "/images/crane-sunset.jpg", alt: "Construction site at sunset" },
-              { src: "/images/worker-smiling.jpg", alt: "All County Construction crew member" },
-            ].map((img) => (
-              <div key={img.src} className="relative h-64 overflow-hidden rounded-2xl">
-                <Image src={img.src} alt={img.alt} fill className="object-cover" />
+          <p className="mx-auto mt-3 max-w-xl text-center text-white/70">
+            We take pride in delivering construction projects that stand strong for generations.
+            Explore some of our featured work below.
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {FEATURED_PROJECTS.map((project) => (
+              <div key={project.title} className="group relative h-64 overflow-hidden rounded-2xl">
+                <Image
+                  src={project.src}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-red">
+                    {project.category}
+                  </p>
+                  <p className="text-sm font-bold">{project.title}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="container-site py-20">
+      {/* Testimonials */}
+      <section id="testimonials" className="container-site py-20">
         <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
-          Common Questions About Our Construction
+          What Our Clients Say About Us
         </h2>
-        <div className="mx-auto mt-10 max-w-2xl divide-y divide-black/10">
-          {FAQS.map((faq) => (
-            <details key={faq.q} className="group py-5">
-              <summary className="cursor-pointer list-none font-semibold text-brand-black">
-                {faq.q}
-              </summary>
-              <p className="mt-2 text-sm text-brand-black/70">{faq.a}</p>
-            </details>
+        <p className="mx-auto mt-3 max-w-xl text-center text-brand-black/70">
+          We take pride in delivering construction solutions that exceed expectations. Here are
+          real Google reviews from our clients.
+        </p>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {GOOGLE_REVIEWS.map((review) => (
+            <div key={review.name} className="flex flex-col rounded-2xl bg-zinc-50 p-6">
+              <div className="flex text-brand-red">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <StarIcon key={i} />
+                ))}
+              </div>
+              <p className="mt-3 flex-1 text-sm text-brand-black/75">&ldquo;{review.text}&rdquo;</p>
+              <div className="mt-4">
+                <p className="text-sm font-bold text-brand-black">{review.name}</p>
+                <p className="text-xs text-brand-black/50">Google review &middot; {review.timeAgo}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Contact */}
+      {/* FAQ */}
       <section className="bg-zinc-50 py-20">
-        <div className="container-site text-center">
-          <h2 className="text-3xl font-extrabold text-brand-black sm:text-4xl">
-            Let&rsquo;s Build Your Vision
+        <div className="container-site">
+          <h2 className="text-center text-3xl font-extrabold text-brand-black sm:text-4xl">
+            Common Questions About Our Construction
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-brand-black/70">
-            Have a question about our construction services, pricing, or ongoing projects? Our
-            team is ready to assist you.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              href={BUSINESS.phoneHref}
-              className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white hover:bg-brand-red-dark"
-            >
-              {BUSINESS.phoneDisplay}
-            </a>
-            <a
-              href={BUSINESS.emailHref}
-              className="rounded-full border-2 border-brand-black px-7 py-3.5 text-sm font-bold text-brand-black hover:bg-brand-black hover:text-white"
-            >
-              {BUSINESS.email}
-            </a>
+          <div className="mx-auto mt-10 max-w-2xl divide-y divide-black/10">
+            {FAQS.map((faq) => (
+              <details key={faq.q} className="group py-5">
+                <summary className="cursor-pointer list-none font-semibold text-brand-black">
+                  {faq.q}
+                </summary>
+                <p className="mt-2 text-sm text-brand-black/70">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-20">
+        <div className="container-site">
+          <div className="mx-auto max-w-xl text-center">
+            <h2 className="text-3xl font-extrabold text-brand-black sm:text-4xl">
+              Let&rsquo;s Build Your Vision
+            </h2>
+            <p className="mt-3 text-brand-black/70">
+              Have a question about our construction services, pricing, or ongoing projects? Our
+              team is ready to assist you.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <a
+                href={BUSINESS.phoneHref}
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white hover:bg-brand-red-dark"
+              >
+                {BUSINESS.phoneDisplay}
+              </a>
+              <a
+                href={BUSINESS.emailHref}
+                className="rounded-full border-2 border-brand-black px-7 py-3.5 text-sm font-bold text-brand-black hover:bg-brand-black hover:text-white"
+              >
+                {BUSINESS.email}
+              </a>
+            </div>
+          </div>
+          <div className="mx-auto mt-10 max-w-xl">
+            <ContactForm />
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+      <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.9L10 1.5z" />
+    </svg>
   );
 }

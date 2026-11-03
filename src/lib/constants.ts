@@ -6,14 +6,17 @@ export const BUSINESS = {
   email: "angelica@allcountyfl.com",
   emailHref: "mailto:angelica@allcountyfl.com",
   serviceArea: "Central Florida, including Orlando and the surrounding counties",
+  locationLabel: "Central Florida, USA",
   addressRegion: "FL",
   url: "https://allcountyfl.com",
 } as const;
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Bathroom Remodeling", href: "/bathroom-remodeling" },
   { label: "About Us", href: "/#about" },
   { label: "Services", href: "/#services" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Bathroom Remodeling", href: "/bathroom-remodeling" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Contact Us", href: "/#contact" },
 ] as const;
