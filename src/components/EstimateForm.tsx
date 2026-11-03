@@ -43,7 +43,7 @@ export default function EstimateForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl bg-white p-8 text-center shadow-sm">
+      <div className="text-center">
         <h3 className="text-xl font-bold text-brand-black">Request received!</h3>
         <p className="mt-2 text-sm text-brand-black/70">
           Thanks for reaching out. Our team will call or email you shortly to schedule your free
@@ -55,7 +55,7 @@ export default function EstimateForm() {
 
   if (status === "not-configured") {
     return (
-      <div className="rounded-2xl bg-white p-8 text-center shadow-sm">
+      <div className="text-center">
         <h3 className="text-xl font-bold text-brand-black">Let&rsquo;s talk about your project</h3>
         <p className="mt-2 text-sm text-brand-black/70">
           Our online form isn&rsquo;t finished connecting yet &mdash; please call or email us
@@ -80,7 +80,7 @@ export default function EstimateForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl bg-white p-8 shadow-sm">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {/* Honeypot field — hidden from real users, bots tend to fill every field */}
       <input
         type="text"
