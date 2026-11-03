@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { BUSINESS, NAV_LINKS } from "@/lib/constants";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -27,10 +29,19 @@ export default function Header() {
               {BUSINESS.email}
             </a>
           </div>
+          <div className="flex items-center gap-3">
+            {[FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon].map((Icon, i) => (
+              <span
+                key={i}
+                aria-hidden="true"
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15"
+              >
+                <Icon />
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-
-
 
       <div className="container-site flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
@@ -50,15 +61,23 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-5 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-semibold whitespace-nowrap text-brand-black transition-colors hover:text-brand-red"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive =
+              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative pb-1 text-sm font-semibold whitespace-nowrap transition-colors hover:text-brand-red ${
+                  isActive
+                    ? "text-brand-red after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand-red"
+                    : "text-brand-black"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -134,6 +153,40 @@ function MenuIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
       <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
+      <path d="M13.5 9H15V6h-1.5C11.6 6 10 7.6 10 9.5V11H8v3h2v7h3v-7h2.2l.8-3H13v-1.5c0-.3.2-.5.5-.5Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-3 w-3">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function YoutubeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
+      <path d="M22 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.8 2.8 0 0 0-2 2C2 8.6 2 12 2 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5ZM10 15.5v-7l6 3.5-6 3.5Z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
+      <path d="M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.84-2 3.78-2 4 0 4.75 2.6 4.75 6V21h-4v-5.3c0-1.26-.02-2.9-1.76-2.9-1.76 0-2.03 1.37-2.03 2.8V21h-4V9Z" />
     </svg>
   );
 }

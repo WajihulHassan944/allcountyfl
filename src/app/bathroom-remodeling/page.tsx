@@ -140,54 +140,62 @@ export default function BathroomRemodelingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-black text-white">
-        <div className="container-site relative grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
-          <div className="relative z-10 flex flex-col justify-center py-20 pr-0 sm:py-24 lg:py-28 lg:pr-14">
-            <Reveal>
-              <p className="text-xs font-bold uppercase tracking-wider text-brand-red">
-                All County Construction Services
-              </p>
-              <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
-                Bathroom Remodeling You Can Trust
-              </h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-white/75">
-                Fully remodeled, custom showers, tile, vanities, and fixtures &mdash; built by a
-                licensed and insured team, from free estimates to final walkthrough.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={BUSINESS.phoneHref}
-                  className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-red/30 transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark hover:shadow-xl"
-                >
-                  Call {BUSINESS.phoneDisplay}
-                </a>
-                <a
-                  href="#estimate"
-                  className="rounded-full border-2 border-white/80 px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-brand-black"
-                >
-                  Request a Bathroom Estimate
-                </a>
-              </div>
-            </Reveal>
-          </div>
+        <Image
+          src="/images/bathroom-3.jpg"
+          alt="Example bathroom remodel by All County Construction"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,#161616_0%,#161616_28%,rgba(22,22,22,0.97)_38%,rgba(22,22,22,0.82)_48%,rgba(22,22,22,0.45)_60%,rgba(22,22,22,0.1)_74%,transparent_88%)]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent"
+        />
 
-          <Reveal delay={150} className="relative -mx-5 h-72 sm:-mx-6 sm:h-96 lg:mx-0 lg:h-auto">
-            <Image
-              src="/images/bathroom-3.jpg"
-              alt="Example bathroom remodel by All County Construction"
-              fill
-              priority
-              className="object-cover"
-            />
-            <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl">
-              <div className="flex text-brand-red">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <StarIcon key={i} />
-                ))}
-              </div>
-              <div className="leading-tight">
-                <p className="text-sm font-extrabold text-brand-black">5.0 / 5</p>
-                <p className="text-xs text-brand-black/60">Google Reviews</p>
-              </div>
+        <div className="container-site relative py-20 sm:py-24 lg:py-32">
+          <Reveal>
+            <p className="text-xs font-bold uppercase tracking-wider text-brand-red">
+              All County Construction Services
+            </p>
+            <h1 className="mt-5 max-w-xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl">
+              Bathroom Remodeling You Can Trust
+            </h1>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/75">
+              Fully remodeled, custom showers, tile, vanities, and fixtures &mdash; built by a
+              licensed and insured team, from free estimates to final walkthrough.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href={BUSINESS.phoneHref}
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-red/30 transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark hover:shadow-xl"
+              >
+                Call {BUSINESS.phoneDisplay}
+              </a>
+              <a
+                href="#estimate"
+                className="rounded-full border-2 border-white/80 px-7 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-brand-black"
+              >
+                Request a Bathroom Estimate
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal
+            delay={150}
+            className="mt-14 inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-xl lg:absolute lg:bottom-14 lg:right-16 lg:mt-0"
+          >
+            <div className="flex text-brand-red">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <StarIcon key={i} />
+              ))}
+            </div>
+            <div className="leading-tight">
+              <p className="text-sm font-extrabold text-brand-black">5.0 / 5</p>
+              <p className="text-xs text-brand-black/60">Google Reviews</p>
             </div>
           </Reveal>
         </div>
