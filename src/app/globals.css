@@ -18,6 +18,7 @@
   --color-heading: var(--heading-color);
   --font-sans: var(--font-lato);
   --font-heading: var(--font-poppins);
+  --font-display: var(--font-playfair);
 }
 
 body {
@@ -71,4 +72,103 @@ h6 {
   .reveal.is-visible {
     animation: none;
   }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-zoom {
+  animation: hero-zoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-zoom {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Long-form legal copy (privacy policy) */
+.policy-prose {
+  color: #4b4b4b;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.policy-prose > * + * {
+  margin-top: 1rem;
+}
+.policy-prose h3 {
+  margin-top: 1.75rem;
+  color: var(--brand-black);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.policy-prose h3:first-child {
+  margin-top: 0;
+}
+.policy-prose strong {
+  color: var(--brand-black);
+}
+.policy-prose a {
+  color: var(--brand-red);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--brand-red) 35%, transparent);
+  text-underline-offset: 3px;
+}
+.policy-prose a:hover {
+  text-decoration-color: var(--brand-red);
+}
+.policy-prose ul,
+.policy-prose ol {
+  padding-left: 0;
+  list-style: none;
+}
+.policy-prose li {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.policy-prose li + li {
+  margin-top: 0.6rem;
+}
+.policy-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.72em;
+  height: 6px;
+  width: 6px;
+  border-radius: 9999px;
+  background: var(--brand-red);
+}
+.policy-prose ol {
+  counter-reset: step;
+}
+.policy-prose ol > li {
+  counter-increment: step;
+}
+.policy-prose ol > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  display: flex;
+  height: 1.25rem;
+  width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--brand-red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
 }

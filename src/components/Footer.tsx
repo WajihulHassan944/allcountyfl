@@ -87,7 +87,12 @@ export default function Footer() {
           <p>
             &copy; {CURRENT_YEAR} {BUSINESS.name} All Rights Reserved.
           </p>
-          <p>Licensed &amp; insured general contractor.</p>
+          <p className="flex items-center gap-4">
+            <span>Licensed &amp; insured general contractor.</span>
+            <Link href="/privacy-policy" className="underline-offset-2 hover:text-white hover:underline">
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </footer>

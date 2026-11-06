@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Lato } from "next/font/google";
+import { Poppins, Lato, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,6 +9,13 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
 });
 
 const lato = Lato({
@@ -55,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${lato.variable} h-full antialiased`}
+      className={`${poppins.variable} ${lato.variable} ${playfair.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

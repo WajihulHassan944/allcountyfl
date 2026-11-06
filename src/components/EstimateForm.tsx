@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { BUSINESS } from "@/lib/constants";
 
 type Status = "idle" | "submitting" | "success" | "error" | "not-configured";
@@ -92,7 +93,7 @@ export default function EstimateForm() {
       />
 
       <div>
-        <label htmlFor="name" className="text-sm font-semibold text-brand-black">
+        <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-brand-black/70">
           Name
         </label>
         <input
@@ -100,13 +101,13 @@ export default function EstimateForm() {
           name="name"
           type="text"
           required
-          className="mt-1 w-full rounded-lg border border-black/15 px-4 py-2.5 text-sm outline-none focus:border-brand-red"
+          className="mt-1.5 w-full rounded-xl border border-black/10 bg-zinc-50 px-4 py-3 text-sm text-brand-black outline-none transition-all placeholder:text-brand-black/35 focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
         />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="text-sm font-semibold text-brand-black">
+          <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-brand-black/70">
             Phone
           </label>
           <input
@@ -114,36 +115,36 @@ export default function EstimateForm() {
             name="phone"
             type="tel"
             required
-            className="mt-1 w-full rounded-lg border border-black/15 px-4 py-2.5 text-sm outline-none focus:border-brand-red"
+            className="mt-1.5 w-full rounded-xl border border-black/10 bg-zinc-50 px-4 py-3 text-sm text-brand-black outline-none transition-all placeholder:text-brand-black/35 focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
           />
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-semibold text-brand-black">
+          <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-brand-black/70">
             Email
           </label>
           <input
             id="email"
             name="email"
             type="email"
-            className="mt-1 w-full rounded-lg border border-black/15 px-4 py-2.5 text-sm outline-none focus:border-brand-red"
+            className="mt-1.5 w-full rounded-xl border border-black/10 bg-zinc-50 px-4 py-3 text-sm text-brand-black outline-none transition-all placeholder:text-brand-black/35 focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="location" className="text-sm font-semibold text-brand-black">
+        <label htmlFor="location" className="text-xs font-bold uppercase tracking-wider text-brand-black/70">
           Project Location (city)
         </label>
         <input
           id="location"
           name="location"
           type="text"
-          className="mt-1 w-full rounded-lg border border-black/15 px-4 py-2.5 text-sm outline-none focus:border-brand-red"
+          className="mt-1.5 w-full rounded-xl border border-black/10 bg-zinc-50 px-4 py-3 text-sm text-brand-black outline-none transition-all placeholder:text-brand-black/35 focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
         />
       </div>
 
       <div>
-        <label htmlFor="description" className="text-sm font-semibold text-brand-black">
+        <label htmlFor="description" className="text-xs font-bold uppercase tracking-wider text-brand-black/70">
           Tell us about your bathroom project
         </label>
         <textarea
@@ -151,7 +152,7 @@ export default function EstimateForm() {
           name="description"
           required
           rows={4}
-          className="mt-1 w-full rounded-lg border border-black/15 px-4 py-2.5 text-sm outline-none focus:border-brand-red"
+          className="mt-1.5 w-full rounded-xl border border-black/10 bg-zinc-50 px-4 py-3 text-sm text-brand-black outline-none transition-all placeholder:text-brand-black/35 focus:border-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/10"
         />
       </div>
 
@@ -162,15 +163,17 @@ export default function EstimateForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-full bg-brand-red py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark disabled:opacity-60"
+        className="w-full rounded-full bg-brand-red py-4 text-sm font-bold text-white shadow-lg shadow-brand-red/25 transition-all hover:-translate-y-0.5 hover:bg-brand-red-dark hover:shadow-xl hover:shadow-brand-red/30 disabled:translate-y-0 disabled:opacity-60"
       >
         {status === "submitting" ? "Sending..." : "Request My Free Estimate"}
       </button>
-      <p className="text-center text-xs text-brand-black/50">
-        Prefer to talk? Call{" "}
-        <a href={BUSINESS.phoneHref} className="font-semibold text-brand-red">
-          {BUSINESS.phoneDisplay}
-        </a>
+      <p className="text-center text-xs leading-relaxed text-brand-black/50">
+        By submitting, you agree that {BUSINESS.shortName} may contact you by phone, text, or
+        email about your project. We never sell your information. See our{" "}
+        <Link href="/privacy-policy" className="font-semibold text-brand-red hover:underline">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </form>
   );
