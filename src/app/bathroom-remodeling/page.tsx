@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import BeforeAfter from "@/components/BeforeAfter";
 import EstimateForm from "@/components/EstimateForm";
 import MobileCta from "@/components/MobileCta";
 import Reveal from "@/components/Reveal";
@@ -32,31 +33,37 @@ const SERVICES_OFFERED = [
     title: "Full Bathroom Remodels",
     description: "Complete, start-to-finish remodels from demolition to final walkthrough.",
     icon: <BathtubIcon />,
+    image: "/images/projects/curbless-walk-in-shower.jpg",
   },
   {
     title: "Custom & Walk-In Showers",
     description: "Frameless glass, tile surrounds, and accessible walk-in designs.",
     icon: <ShowerIcon />,
+    image: "/images/projects/marble-glass-shower.jpg",
   },
   {
     title: "Tile, Flooring & Waterproofing",
     description: "Precision tile work and proper waterproofing that lasts for years.",
     icon: <TileIcon />,
+    image: "/images/projects/emerald-shower-bench.jpg",
   },
   {
     title: "Vanities, Countertops & Cabinetry",
     description: "Custom and prefab vanities fitted to your space and style.",
     icon: <CabinetIcon />,
+    image: "/images/projects/emerald-vanity.jpg",
   },
   {
     title: "Plumbing Fixtures & Lighting",
     description: "Fixture upgrades, lighting, and ventilation improvements.",
     icon: <BulbIcon />,
+    image: "/images/projects/accessible-shower-detail.jpg",
   },
   {
     title: "Aging-in-Place Conversions",
     description: "Accessible, safer bathrooms designed for every stage of life.",
     icon: <RefreshIcon />,
+    image: "/images/projects/accessible-curbless-shower.jpg",
   },
 ];
 
@@ -133,15 +140,50 @@ const BATHROOM_REVIEWS = GOOGLE_REVIEWS.filter((r) =>
 );
 const [FEATURED_REVIEW, ...OTHER_REVIEWS] = BATHROOM_REVIEWS;
 
-// Example/inspiration photos (stock) shown until the client provides real
-// completed-project photos. Labeled as "style inspiration" on the page so
-// they are not presented as completed All County projects.
+// Real completed projects by All County Construction (client-provided photos).
 const GALLERY_IMAGES = [
-  { src: "/images/bathroom-1.jpg", alt: "Modern double-vanity bathroom", label: "Double Vanity Suites" },
-  { src: "/images/bathroom-2.jpg", alt: "Bathroom with patterned tile shower", label: "Statement Tile" },
-  { src: "/images/bathroom-3.jpg", alt: "Frameless glass walk-in shower", label: "Frameless Glass Showers" },
-  { src: "/images/bathroom-4.jpg", alt: "Bathroom with freestanding tub", label: "Freestanding Tubs" },
-  { src: "/images/bathroom-6.jpg", alt: "Marble tile double-vanity bathroom", label: "Marble & Stone" },
+  {
+    src: "/images/projects/emerald-shower.jpg",
+    alt: "Emerald green tile walk-in shower with hexagon marble floor and bench",
+    label: "Emerald Spa Shower",
+    tag: "Full Remodel",
+  },
+  {
+    src: "/images/projects/marble-glass-shower.jpg",
+    alt: "Marble-look tile shower with frameless glass enclosure and mosaic niches",
+    label: "Marble Glass Enclosure",
+    tag: "Custom Shower",
+  },
+  {
+    src: "/images/projects/curbless-walk-in-shower.jpg",
+    alt: "Curbless walk-in shower with marble-look tile and pebble floor",
+    label: "Curbless Walk-In",
+    tag: "Full Remodel",
+  },
+  {
+    src: "/images/projects/glass-rain-shower.jpg",
+    alt: "Subway tile shower with frameless glass walls and rain shower head",
+    label: "Glass Rain Shower",
+    tag: "Custom Shower",
+  },
+  {
+    src: "/images/projects/emerald-vanity.jpg",
+    alt: "Black vanity with marble top, gold mirror, and emerald tile walls",
+    label: "Vanity & Finishes",
+    tag: "Full Remodel",
+  },
+  {
+    src: "/images/projects/accessible-curbless-shower.jpg",
+    alt: "Accessible curbless shower with linear drain and grab bars",
+    label: "Accessible Walk-In",
+    tag: "Aging in Place",
+  },
+  {
+    src: "/images/projects/commercial-restroom.jpg",
+    alt: "ADA-compliant commercial restroom with black fixtures and grab bars",
+    label: "ADA Commercial Restroom",
+    tag: "Commercial",
+  },
 ];
 
 export default function BathroomRemodelingPage() {
@@ -164,17 +206,19 @@ export default function BathroomRemodelingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-black text-white">
-        <Image
-          src="/images/bathroom-3.jpg"
-          alt="Bright, modern bathroom with a frameless glass walk-in shower"
-          fill
-          priority
-          sizes="100vw"
-          className="hero-zoom object-cover"
-        />
+        <div className="absolute inset-0 overflow-hidden md:left-[30%]">
+          <Image
+            src="/images/projects/emerald-shower.jpg"
+            alt="Emerald green tiled walk-in shower with a hexagon marble floor, remodeled by All County"
+            fill
+            priority
+            sizes="(min-width: 768px) 70vw, 100vw"
+            className="hero-zoom object-cover object-[center_45%]"
+          />
+        </div>
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,#161616_0%,#161616_28%,rgba(22,22,22,0.97)_38%,rgba(22,22,22,0.82)_48%,rgba(22,22,22,0.45)_60%,rgba(22,22,22,0.1)_74%,transparent_88%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,#161616_0%,#161616_30%,rgba(22,22,22,0.96)_38%,rgba(22,22,22,0.78)_48%,rgba(22,22,22,0.4)_60%,rgba(22,22,22,0.08)_76%,transparent_90%)] max-md:bg-none max-md:bg-brand-black/70"
         />
         <div
           aria-hidden
@@ -316,33 +360,93 @@ export default function BathroomRemodelingPage() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES_OFFERED.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 100}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-black/[0.07] bg-white p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-transparent hover:bg-brand-black hover:shadow-2xl hover:shadow-black/20">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-red/0 blur-3xl transition-colors duration-500 group-hover:bg-brand-red/30"
-                />
-                <div className="relative flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-red/10 text-brand-red transition-colors duration-500 group-hover:bg-brand-red group-hover:text-white">
+              <div className="group relative flex h-full min-h-[250px] overflow-hidden rounded-3xl border border-black/[0.07] bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/10">
+                <div className="absolute inset-y-0 right-0 w-[48%] [mask-image:linear-gradient(to_right,transparent,black_55%)]">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 200px, 45vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                </div>
+                <div className="relative z-10 flex max-w-[64%] flex-col p-7 sm:p-8">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-red/10 text-brand-red transition-colors duration-500 group-hover:bg-brand-red group-hover:text-white">
                     {item.icon}
                   </div>
-                  <span className="font-heading text-sm font-bold text-brand-black/20 transition-colors duration-500 group-hover:text-white/30">
+                  <h3 className="mt-6 text-lg font-bold leading-snug text-brand-black">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-black/65">
+                    {item.description}
+                  </p>
+                  <span className="mt-auto pt-5 font-heading text-xs font-bold tracking-widest text-brand-red/50">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="relative mt-7 text-lg font-bold text-brand-black transition-colors duration-500 group-hover:text-white">
-                  {item.title}
-                </h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-brand-black/65 transition-colors duration-500 group-hover:text-white/70">
-                  {item.description}
-                </p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Craftsmanship */}
+      {/* Before & after */}
       <section className="relative overflow-hidden bg-[#f8f4f3] py-24 sm:py-28">
+        <div className="container-site grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <Reveal>
+            <Eyebrow>Before &amp; After</Eyebrow>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-brand-black sm:text-[2.75rem]">
+              Dramatic{" "}
+              <span className="font-display font-medium italic text-brand-red">
+                transformations
+              </span>{" "}
+              for Florida homes
+            </h2>
+            <p className="mt-5 text-brand-black/65">
+              Drag the slider to see one of our walk-in shower remodels mid-construction and
+              finished &mdash; a curbless, low-maintenance shower with a linear drain, built-in
+              niche, and full-height tile.
+            </p>
+            <ul className="mt-8 grid gap-3 text-sm sm:grid-cols-2">
+              {["Curbless walk-in entry", "Linear drain", "Built-in shower niche", "Floor-to-ceiling tile"].map(
+                (item) => (
+                  <li key={item} className="flex items-center gap-3 font-semibold text-brand-black">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                      <CheckIcon small />
+                    </span>
+                    {item}
+                  </li>
+                )
+              )}
+            </ul>
+            <a
+              href="#work"
+              className="group mt-10 inline-flex items-center gap-2 rounded-full bg-brand-black px-7 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-red"
+            >
+              View Our Projects
+              <span className="transition-transform group-hover:translate-x-1">
+                <ArrowIcon />
+              </span>
+            </a>
+          </Reveal>
+          <Reveal delay={120}>
+            <BeforeAfter
+              before={{
+                src: "/images/projects/walk-in-before.jpg",
+                alt: "Bathroom during remodel, before the walk-in shower was finished",
+              }}
+              after={{
+                src: "/images/projects/walk-in-after.jpg",
+                alt: "Finished curbless walk-in shower with linear drain and tile niche",
+              }}
+              className="aspect-[4/5] rounded-[2rem] shadow-2xl shadow-black/15 sm:aspect-[5/5]"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Craftsmanship */}
+      <section className="relative overflow-hidden bg-white py-24 sm:py-28">
         <div className="container-site grid gap-16 lg:grid-cols-2 lg:items-center">
           <Reveal className="relative">
             <div
@@ -351,8 +455,8 @@ export default function BathroomRemodelingPage() {
             />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/15 sm:aspect-[5/5]">
               <Image
-                src="/images/bathroom-5.jpg"
-                alt="Bathroom with a walk-in shower and soaking tub"
+                src="/images/projects/accessible-shower-wide.jpg"
+                alt="Curbless walk-in shower with grab bars and linear drain built by All County"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -404,15 +508,20 @@ export default function BathroomRemodelingPage() {
         </div>
       </section>
 
-      {/* Style gallery (example/inspiration photos until client photos arrive) */}
-      <section id="work" className="container-site py-24 sm:py-28">
+      {/* Project gallery — real completed All County projects */}
+      <section id="work" className="scroll-mt-28 bg-[#f8f4f3] py-24 sm:py-28">
+        <div className="container-site">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <Reveal>
-            <Eyebrow>Style Inspiration</Eyebrow>
+            <Eyebrow>Our Work</Eyebrow>
             <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-brand-black sm:text-[2.75rem]">
-              The kind of bathrooms{" "}
-              <span className="font-display font-medium italic text-brand-red">we build</span>
+              Recent bathroom{" "}
+              <span className="font-display font-medium italic text-brand-red">projects</span>
             </h2>
+            <p className="mt-3 max-w-lg text-brand-black/60">
+              Real bathrooms, built by our crew for homeowners and businesses across Central
+              Florida.
+            </p>
           </Reveal>
           <Reveal delay={100}>
             <a
@@ -427,32 +536,35 @@ export default function BathroomRemodelingPage() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid auto-rows-[180px] grid-cols-2 gap-4 sm:auto-rows-[220px] lg:grid-cols-4">
+        <div className="mt-12 grid auto-rows-[200px] grid-cols-2 gap-4 sm:auto-rows-[240px] lg:auto-rows-[270px] lg:grid-cols-4">
           {GALLERY_IMAGES.map((img, i) => (
             <Reveal
               key={img.src}
-              delay={(i % 5) * 80}
-              className={`group relative overflow-hidden rounded-3xl ${
-                i === 0 ? "col-span-2 row-span-2" : ""
+              delay={(i % 4) * 80}
+              className={`group relative overflow-hidden rounded-3xl bg-zinc-200 ${
+                i === 0 ? "row-span-2" : ""
               }`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes={i === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"}
+                sizes={i === 0 ? "(min-width: 1024px) 25vw, 50vw" : "(min-width: 1024px) 25vw, 50vw"}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
-              <span className="absolute bottom-4 left-4 right-4 font-heading text-sm font-bold text-white sm:bottom-5 sm:left-5 sm:text-base">
-                {img.label}
-              </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/0 to-transparent opacity-85 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
+                  {img.tag}
+                </span>
+                <span className="mt-1 block font-heading text-sm font-bold text-white sm:text-base">
+                  {img.label}
+                </span>
+              </div>
             </Reveal>
           ))}
         </div>
-        <p className="mt-4 text-xs text-brand-black/40">
-          Photos shown are design inspiration for the styles we build.
-        </p>
+        </div>
       </section>
 
       {/* Reviews */}
@@ -556,7 +668,7 @@ export default function BathroomRemodelingPage() {
         <Reveal className="block">
           <div className="relative overflow-hidden rounded-[2rem] bg-brand-black px-8 py-16 text-white sm:px-14 sm:py-20">
             <Image
-              src="/images/bathroom-4.jpg"
+              src="/images/projects/curbless-walk-in-shower.jpg"
               alt=""
               fill
               sizes="(min-width: 1200px) 1200px, 100vw"
@@ -658,66 +770,82 @@ export default function BathroomRemodelingPage() {
         </div>
       </section>
 
-      {/* Estimate form */}
-      <section id="estimate" className="scroll-mt-28 bg-[#f8f4f3] pb-32 sm:pb-28">
-        <div className="container-site">
-          <Reveal className="block">
-            <div className="overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/10 ring-1 ring-black/5">
-              <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-                <div className="relative flex flex-col justify-between overflow-hidden bg-brand-black px-8 py-12 text-white sm:px-12 sm:py-14">
-                  <Image
-                    src="/images/bathroom-6.jpg"
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover opacity-20"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-brand-black/60 via-brand-black/85 to-brand-black" />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl"
-                  />
-                  <div className="relative">
-                    <Eyebrow light>Get Started</Eyebrow>
-                    <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-[2.5rem]">
-                      Request your free{" "}
-                      <span className="font-display font-medium italic text-brand-red">
-                        bathroom estimate
-                      </span>
-                    </h2>
-                    <p className="mt-4 text-white/70">
-                      Tell us about your project and we&rsquo;ll follow up to schedule your free
-                      estimate. No pressure, no obligation.
-                    </p>
-                    <ul className="mt-8 space-y-4 text-sm">
-                      {[
-                        "Free, no-obligation written estimate",
-                        "Licensed & insured team",
-                        "Clear timeline before work begins",
-                      ].map((item) => (
-                        <li key={item} className="flex items-center gap-3">
-                          <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
-                            <CheckIcon small />
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="relative mt-12 border-t border-white/10 pt-6 text-sm">
-                    <p className="text-white/50">Prefer to talk it through?</p>
-                    <a
-                      href={BUSINESS.phoneHref}
-                      className="mt-1 inline-flex items-center gap-2 font-heading text-xl font-bold text-white hover:text-brand-red"
-                    >
-                      <PhoneIcon />
-                      {BUSINESS.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
-                <div className="p-8 sm:p-12">
-                  <EstimateForm />
-                </div>
+      {/* Estimate form — full-bleed dark photo backdrop with floating form card */}
+      <section
+        id="estimate"
+        className="relative scroll-mt-28 overflow-hidden border-b border-white/10 bg-brand-black pb-32 pt-24 text-white sm:pb-28 sm:pt-28"
+      >
+        <Image
+          src="/images/projects/emerald-vanity.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_40%] opacity-40"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(100deg,#161616_0%,rgba(22,22,22,0.94)_40%,rgba(22,22,22,0.7)_70%,rgba(22,22,22,0.55)_100%)]" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-brand-red/20 blur-[130px]"
+        />
+        <div className="container-site relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <Eyebrow light>Get Started</Eyebrow>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+              Request your free{" "}
+              <span className="font-display font-medium italic text-brand-red">
+                bathroom estimate
+              </span>
+            </h2>
+            <p className="mt-5 max-w-md text-white/70">
+              Tell us about your project and we&rsquo;ll follow up to schedule your free estimate.
+              No pressure, no obligation.
+            </p>
+            <ul className="mt-8 space-y-4 text-sm">
+              {[
+                "Free, no-obligation written estimate",
+                "Licensed & insured team",
+                "Clear timeline before work begins",
+                "Permits handled for you",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                    <CheckIcon small />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 grid max-w-md gap-3 text-sm sm:grid-cols-2">
+              <a
+                href={BUSINESS.phoneHref}
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 font-semibold backdrop-blur transition-colors hover:border-brand-red hover:bg-brand-red/15"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-white">
+                  <PhoneIcon />
+                </span>
+                {BUSINESS.phoneDisplay}
+              </a>
+              <a
+                href={BUSINESS.emailHref}
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 font-semibold backdrop-blur transition-colors hover:border-brand-red hover:bg-brand-red/15"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-white">
+                  <MailIcon />
+                </span>
+                Email Us
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="rounded-[2rem] bg-white p-7 text-brand-black shadow-2xl shadow-black/40 sm:p-10">
+              <h3 className="text-xl font-extrabold tracking-tight sm:text-2xl">
+                Get your free bathroom remodel estimate
+              </h3>
+              <p className="mt-1.5 text-sm text-brand-black/55">
+                Takes about a minute. We&rsquo;ll reach out to schedule a visit.
+              </p>
+              <div className="mt-7">
+                <EstimateForm />
               </div>
             </div>
           </Reveal>
