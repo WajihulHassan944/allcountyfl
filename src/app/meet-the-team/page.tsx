@@ -320,41 +320,43 @@ export default function MeetTheTeamPage() {
         </div>
       </section>
 
-      {/* CTA — rich red banner */}
-      <section className="container-site pb-32 sm:pb-28">
-        <Reveal className="block">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[radial-gradient(120%_140%_at_85%_10%,#e2312e_0%,#b3120f_45%,#6d0a08_100%)] px-8 py-16 text-center text-white shadow-2xl shadow-brand-red/25 sm:px-14 sm:py-20">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:48px_48px]"
-            />
-            <div className="relative mx-auto max-w-2xl">
-              <h2 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-[2.6rem]">
-                Let&rsquo;s build something{" "}
-                <span className="font-display font-medium italic text-white/90">beautiful</span>{" "}
-                together
-              </h2>
-              <p className="mt-4 text-white/80">
-                Ready to remodel your bathroom or start a commercial project? Talk directly with our
-                team &mdash; free estimates, no pressure.
-              </p>
-              <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/bathroom-remodeling#estimate"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-brand-red shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-black hover:text-white"
-                >
-                  Get My Free Estimate
-                  <ArrowIcon />
-                </Link>
-                <a
-                  href={BUSINESS.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 px-8 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-brand-red"
-                >
-                  <PhoneIcon />
-                  Call {BUSINESS.phoneDisplay}
-                </a>
-              </div>
-            </div>
+      {/* CTA — full-width red palm banner (matches design) */}
+      <section className="relative overflow-hidden bg-[#8f0d0b] pb-28 pt-20 text-center text-white sm:py-24">
+        <Image
+          src="/images/cta-red-palms.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-right"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/25" />
+        <Reveal className="container-site relative block">
+          <h2 className="mx-auto max-w-5xl text-3xl font-extrabold leading-tight tracking-tight sm:text-[2.9rem]">
+            Let&rsquo;s Build Something{" "}
+            <span className="font-display font-semibold italic text-[#ff5b54]">Beautiful</span>{" "}
+            Together
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-white/85 sm:text-lg">
+            Ready to remodel your bathroom or start a new construction project in Central Florida?
+            Schedule a consultation with our team and let&rsquo;s bring your vision to life.
+          </p>
+          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              href="/bathroom-remodeling#estimate"
+              className="group inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-bold text-brand-red shadow-xl shadow-black/20 transition-all hover:-translate-y-0.5 hover:bg-brand-black hover:text-white sm:text-base"
+            >
+              Book a Consultation
+              <span className="transition-transform group-hover:translate-x-1">
+                <ArrowIcon />
+              </span>
+            </Link>
+            <Link
+              href="/bathroom-remodeling#work"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/90 px-8 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-brand-red sm:text-base"
+            >
+              <ImageIcon />
+              View Our Work
+            </Link>
           </div>
         </Reveal>
       </section>
@@ -447,6 +449,16 @@ function ShieldIcon() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-7 w-7">
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+function ImageIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="8.5" cy="9.5" r="1.5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 16l-5-5-9 9" />
     </svg>
   );
 }
