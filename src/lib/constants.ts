@@ -13,7 +13,7 @@ export const BUSINESS = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/#about" },
+  { label: "Meet the Team", href: "/meet-the-team" },
   { label: "Services", href: "/#services" },
   { label: "Bathroom Remodeling", href: "/bathroom-remodeling" },
   { label: "Projects", href: "/#projects" },
