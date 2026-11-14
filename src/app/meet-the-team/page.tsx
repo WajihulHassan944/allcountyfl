@@ -20,6 +20,12 @@ export const metadata: Metadata = {
 
 const TEAM = [
   {
+    name: "Marcus El",
+    role: "Chief Executive Officer",
+    image: "/images/team/marcus-el.jpg",
+    bio: "Leads every project personally — walking job sites, answering client calls, and making sure the work meets the All County standard.",
+  },
+  {
     name: "Angelica Perrin",
     role: "Chief Financial Officer",
     image: "/images/team/angelica-perrin.jpg",
@@ -155,7 +161,7 @@ export default function MeetTheTeamPage() {
             <div className="relative aspect-[3/2] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/15">
               <Image
                 src="/images/team/owners.jpg"
-                alt="The owners of All County Construction Services"
+                alt="Marcus El, CEO, and Angelica Perrin, CFO, owners of All County Construction Services"
                 fill
                 sizes="(min-width: 1024px) 55vw, 100vw"
                 className="object-cover"
@@ -170,6 +176,22 @@ export default function MeetTheTeamPage() {
                 personally accountable
               </span>
             </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {[
+                { name: "Marcus El", role: "CEO" },
+                { name: "Angelica Perrin", role: "CFO" },
+              ].map((o) => (
+                <span
+                  key={o.name}
+                  className="inline-flex items-center gap-2 rounded-full bg-[#f8f4f3] px-4 py-2 text-sm"
+                >
+                  <span className="font-heading font-bold text-brand-black">{o.name}</span>
+                  <span className="rounded-full bg-brand-red px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                    {o.role}
+                  </span>
+                </span>
+              ))}
+            </div>
             <p className="mt-5 text-brand-black/65">
               All County Construction Services is owned and run by the people you&rsquo;ll meet on
               your project. We answer our own phones, walk every job, and treat each home and
@@ -207,7 +229,7 @@ export default function MeetTheTeamPage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TEAM.map((member, i) => (
               <Reveal key={member.name} delay={i * 120}>
                 <article className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/10">

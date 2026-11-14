@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BUSINESS, NAV_LINKS } from "@/lib/constants";
+import { BUSINESS, MAIN_SITE, NAV_LINKS, SOCIAL } from "@/lib/constants";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,21 +30,27 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-3">
-            {[FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon].map((Icon, i) => (
-              <span
-                key={i}
-                aria-hidden="true"
-                className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15"
+            {[
+              { label: "Facebook", href: SOCIAL.facebook, Icon: FacebookIcon },
+              { label: "Instagram", href: SOCIAL.instagram, Icon: InstagramIcon },
+            ].map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`All County Construction on ${label}`}
+                className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white hover:text-brand-red"
               >
                 <Icon />
-              </span>
+              </a>
             ))}
           </div>
         </div>
       </div>
 
       <div className="container-site flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href={MAIN_SITE.home} className="flex items-center gap-3">
           <Image
             src="/images/logo.png"
             alt="All County Construction Services logo"
@@ -62,8 +68,7 @@ export default function Header() {
 
         <nav className="hidden items-center gap-5 lg:flex">
           {NAV_LINKS.map((link) => {
-            const isActive =
-              link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+            const isActive = link.href.startsWith("/") && pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}
@@ -175,18 +180,3 @@ function InstagramIcon() {
   );
 }
 
-function YoutubeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
-      <path d="M22 12s0-3.4-.4-5a2.8 2.8 0 0 0-2-2C17.9 4.5 12 4.5 12 4.5s-5.9 0-7.6.5a2.8 2.8 0 0 0-2 2C2 8.6 2 12 2 12s0 3.4.4 5a2.8 2.8 0 0 0 2 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.8 2.8 0 0 0 2-2c.4-1.6.4-5 .4-5ZM10 15.5v-7l6 3.5-6 3.5Z" />
-    </svg>
-  );
-}
-
-function LinkedinIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3 w-3">
-      <path d="M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.84-2 3.78-2 4 0 4.75 2.6 4.75 6V21h-4v-5.3c0-1.26-.02-2.9-1.76-2.9-1.76 0-2.03 1.37-2.03 2.8V21h-4V9Z" />
-    </svg>
-  );
-}

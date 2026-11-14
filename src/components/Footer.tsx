@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BUSINESS } from "@/lib/constants";
+import { BUSINESS, MAIN_SITE } from "@/lib/constants";
 
 const CURRENT_YEAR = 2026;
 
@@ -38,7 +38,7 @@ export default function Footer() {
           <h4 className="text-sm font-bold uppercase tracking-wide text-brand-red">Top Links</h4>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li>
-              <Link href="/" className="hover:text-white">
+              <Link href={MAIN_SITE.home} className="hover:text-white">
                 Home
               </Link>
             </li>
@@ -48,12 +48,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/#services" className="hover:text-white">
+              <Link href={MAIN_SITE.services} className="hover:text-white">
                 Services
               </Link>
             </li>
             <li>
-              <Link href="/#contact" className="hover:text-white">
+              <Link href={MAIN_SITE.contact} className="hover:text-white">
                 Contact
               </Link>
             </li>
@@ -64,12 +64,12 @@ export default function Footer() {
           <h4 className="text-sm font-bold uppercase tracking-wide text-brand-red">Explore</h4>
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li>
-              <Link href="/#projects" className="hover:text-white">
+              <Link href={MAIN_SITE.projects} className="hover:text-white">
                 Projects
               </Link>
             </li>
             <li>
-              <Link href="/#testimonials" className="hover:text-white">
+              <Link href={MAIN_SITE.testimonials} className="hover:text-white">
                 Testimonials
               </Link>
             </li>
