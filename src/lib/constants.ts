@@ -36,3 +36,14 @@ export const NAV_LINKS = [
   { label: "Project", href: MAIN_SITE.projects },
   { label: "Contact Us", href: MAIN_SITE.contact },
 ] as const;
+
+// Where this Next.js app is deployed. Pages are also proxied onto the main
+// domain (allcountyfl.com), where API calls must go to this origin instead.
+export const APP_ORIGIN = "https://allcountyfl.vercel.app";
+
+export function apiUrl(path: string): string {
+  if (typeof window === "undefined") return path;
+  const host = window.location.hostname;
+  const isMainDomain = host === "allcountyfl.com" || host.endsWith(".allcountyfl.com");
+  return isMainDomain ? `${APP_ORIGIN}${path}` : path;
+}

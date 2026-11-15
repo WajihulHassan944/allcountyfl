@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { BUSINESS } from "@/lib/constants";
+import { BUSINESS, apiUrl } from "@/lib/constants";
 
 type Status = "idle" | "submitting" | "success" | "error" | "not-configured";
 
@@ -19,7 +19,7 @@ export default function EstimateForm() {
     const data = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch("/api/estimate", {
+      const response = await fetch(apiUrl("/api/estimate"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
