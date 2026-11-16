@@ -22,7 +22,7 @@ const TEAM = [
   {
     name: "Marcus El",
     role: "Chief Executive Officer",
-    image: "/images/team/marcus-el.jpg",
+    image: "/images/team/marcus-el-2.jpg",
     bio: "Leads every project personally — walking job sites, answering client calls, and making sure the work meets the All County standard.",
   },
   {
