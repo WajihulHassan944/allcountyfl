@@ -9,6 +9,7 @@ export const BUSINESS = {
   locationLabel: "Central Florida, USA",
   addressRegion: "FL",
   url: "https://allcountyfl.com",
+  license: "CBC1268182",
 } as const;
 
 // Pages on the main WordPress site (allcountyfl.com).

@@ -58,10 +58,13 @@ export default function Header() {
             height={52}
             priority
           />
-          <span className="hidden flex-col leading-tight sm:flex">
-            <span className="text-lg font-bold text-brand-black">All County</span>
-            <span className="text-xs font-semibold tracking-wide text-brand-red">
+          <span className="flex flex-col leading-tight">
+            <span className="hidden text-lg font-bold text-brand-black sm:block">All County</span>
+            <span className="hidden text-xs font-semibold tracking-wide text-brand-red sm:block">
               CONSTRUCTION SERVICES
+            </span>
+            <span className="mt-0.5 text-[11px] font-semibold tracking-wide text-brand-black/60">
+              Lic. #{BUSINESS.license}
             </span>
           </span>
         </Link>
