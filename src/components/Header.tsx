@@ -49,21 +49,24 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="container-site flex h-20 items-center justify-between">
-        <Link href={MAIN_SITE.home} className="flex items-center gap-3">
+      {/* Main bar mirrors the allcountyfl.com WordPress header: black bar,
+          round ACC badge, license number beside it. */}
+      <div className="bg-black">
+      <div className="container-site flex h-24 items-center justify-between gap-4 lg:h-[110px]">
+        <Link href={MAIN_SITE.home} className="flex shrink-0 items-center gap-2 sm:gap-2.5">
           <Image
-            src="/images/logo.png"
+            src="/images/logo-badge.png"
             alt="All County Construction Services logo"
-            width={52}
-            height={52}
+            width={108}
+            height={108}
             priority
+            className="h-20 w-20 md:h-[100px] md:w-[100px] lg:h-[108px] lg:w-[108px]"
           />
-          <span className="flex flex-col leading-tight">
-            <span className="hidden text-lg font-bold text-brand-black sm:block">All County</span>
-            <span className="hidden text-xs font-semibold tracking-wide text-brand-red sm:block">
-              CONSTRUCTION SERVICES
+          <span className="flex flex-col font-heading leading-[1.3]">
+            <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[1.5px] text-[#F04A1E]">
+              Licensed Contractor
             </span>
-            <span className="mt-0.5 text-[11px] font-semibold tracking-wide text-brand-black/60">
+            <span className="whitespace-nowrap text-[11px] font-semibold text-white md:text-[13px] lg:text-sm">
               Lic. #{BUSINESS.license}
             </span>
           </span>
@@ -76,10 +79,10 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative pb-1 text-sm font-semibold whitespace-nowrap transition-colors hover:text-brand-red ${
+                className={`relative pb-1 font-heading text-[15px] font-semibold whitespace-nowrap transition-colors hover:text-[#F04A1E] xl:text-base ${
                   isActive
-                    ? "text-brand-red after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand-red"
-                    : "text-brand-black"
+                    ? "text-[#F04A1E] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#F04A1E]"
+                    : "text-white"
                 }`}
               >
                 {link.label}
@@ -91,27 +94,21 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href={BUSINESS.phoneHref}
-            className="hidden items-center gap-2 rounded-full bg-brand-red px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-brand-red-dark sm:flex"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-[#F04A1E] px-6 py-3.5 font-heading text-[15px] font-semibold text-white transition-colors hover:bg-[#d63d14] lg:flex"
           >
             <PhoneIcon />
-            Get Free Quote
-          </a>
-          <a
-            href={BUSINESS.phoneHref}
-            aria-label={`Call ${BUSINESS.phoneDisplay}`}
-            className="flex items-center justify-center rounded-full bg-brand-red p-2.5 text-white sm:hidden"
-          >
-            <PhoneIcon />
+            Get a Free Quote
           </a>
           <button
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 lg:hidden"
+            className="flex h-11 w-12 items-center justify-center rounded-lg bg-[#F04A1E] text-white lg:hidden"
           >
             <MenuIcon />
           </button>
         </div>
+      </div>
       </div>
 {menuOpen && (
         <nav className="border-t border-black/10 bg-white lg:hidden">
